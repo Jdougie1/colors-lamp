@@ -1,0 +1,12 @@
+# OS junk
+.DS_Store
+__MACOSX/
+
+# local secrets (if you ever add them)
+.env
+.env.*
+config.local.php
+api/config.local.php
+
+# logs
+*.log
