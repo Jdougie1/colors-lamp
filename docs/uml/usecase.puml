@@ -26,4 +26,6 @@ note right of UC_Add
 Requires authenticated user session
 and uses AddColor API.
 end note
+
+/' UML diagram source for the COLORS assignment '/
 @enduml
