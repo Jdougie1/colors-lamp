@@ -1,0 +1,29 @@
+@startuml
+title COLORS Web Application - Use Case Diagram
+left to right direction
+skinparam packageStyle rectangle
+
+actor "User" as User
+
+rectangle "COLORS Web Application" {
+  usecase "Log In" as UC_Login
+  usecase "Search Colors" as UC_Search
+  usecase "Add Color" as UC_Add
+  usecase "Log Out" as UC_Logout
+}
+
+User --> UC_Login
+User --> UC_Search
+User --> UC_Add
+User --> UC_Logout
+
+note right of UC_Search
+Requires authenticated user session
+and uses SearchColors API.
+end note
+
+note right of UC_Add
+Requires authenticated user session
+and uses AddColor API.
+end note
+@enduml

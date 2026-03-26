@@ -1,0 +1,62 @@
+@startuml
+title COLORS Web Application - Class Diagram
+skinparam classAttributeIconSize 0
+
+class "LoginPage\n(public/index.html)" as LoginPage <<boundary>> {
+  +loginName: string
+  +loginPassword: string
+  +doLogin()
+}
+
+class "ColorPage\n(public/color.html)" as ColorPage <<boundary>> {
+  +searchText: string
+  +colorText: string
+  +searchColor()
+  +addColor()
+  +doLogout()
+  +readCookie()
+}
+
+class "LoginAPI\n(api/Login.php)" as LoginAPI <<control>> {
+  +getRequestInfo()
+  +returnWithInfo(firstName, lastName, id)
+  +returnWithError(err)
+  +sendResultInfoAsJson(obj)
+}
+
+class "SearchColorsAPI\n(api/SearchColors.php)" as SearchAPI <<control>> {
+  +getRequestInfo()
+  +returnWithInfo(searchResults)
+  +returnWithError(err)
+  +sendResultInfoAsJson(obj)
+}
+
+class "AddColorAPI\n(api/AddColor.php)" as AddAPI <<control>> {
+  +getRequestInfo()
+  +returnWithError(err)
+  +sendResultInfoAsJson(obj)
+}
+
+class "Users" as Users <<entity>> {
+  +ID: int
+  +Login: string
+  +Password: string
+  +firstName: string
+  +lastName: string
+}
+
+class "Colors" as Colors <<entity>> {
+  +UserId: int
+  +Name: string
+}
+
+LoginPage --> LoginAPI : POST login,password
+ColorPage --> SearchAPI : POST search,userId
+ColorPage --> AddAPI : POST color,userId
+
+LoginAPI --> Users : SELECT by Login+Password
+SearchAPI --> Colors : SELECT Name by UserId+Name like
+AddAPI --> Colors : INSERT(UserId, Name)
+
+Users "1" <-- "0..*" Colors : owner
+@enduml

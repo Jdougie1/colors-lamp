@@ -1,0 +1,42 @@
+@startuml
+title COLORS Web Application - Activity Diagram (Main User Flow)
+start
+
+:Open login page (`public/index.html`);
+:Enter username and password;
+:Submit login request (`api/Login.php`);
+
+if (Credentials valid?) then (yes)
+  :Store user id/name in browser state;
+  :Navigate to color page (`public/color.html`);
+else (no)
+  :Show login error message;
+  stop
+endif
+
+while (User stays logged in?) is (yes)
+  :Choose action;
+  if (Search color?) then (yes)
+    :Enter search text;
+    :Send request to `api/SearchColors.php`;
+    if (Matches found?) then (yes)
+      :Display color list;
+    else (no)
+      :Display "No Records Found";
+    endif
+  else (no)
+    if (Add color?) then (yes)
+      :Enter color name;
+      :Send request to `api/AddColor.php`;
+      :Display add result;
+    else (no)
+      :Click logout;
+      :Clear browser user state;
+      :Return to login page;
+      stop
+    endif
+  endif
+endwhile (no)
+
+stop
+@enduml
