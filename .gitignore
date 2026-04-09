@@ -10,3 +10,6 @@ api/config.local.php
 
 # logs
 *.log
+-e 
+# dependencies
+node_modules/

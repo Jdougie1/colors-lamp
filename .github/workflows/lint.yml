@@ -1,0 +1,32 @@
+name: Lint
+
+on:
+  push:
+    branches: ["*"]
+  pull_request:
+    branches: ["*"]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Lint HTML
+        run: npx htmlhint public/**/*.html
+
+      - name: Lint CSS
+        run: npx stylelint public/css/**/*.css
+
+      - name: Lint JavaScript
+        run: npx eslint public/js/**/*.js

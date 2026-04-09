@@ -1,0 +1,14 @@
+{
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "no-unused-vars": "warn",
+    "no-undef": "warn",
+    "semi": ["error", "always"],
+    "eqeqeq": "warn"
+  },
+  "globals": {
+    "md5": "readonly"
+  }
+}

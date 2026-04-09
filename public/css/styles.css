@@ -1,0 +1,56 @@
+body {
+  font-family: Ubuntu, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+}
+
+#title {
+  color: #333;
+}
+
+#inner-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+  margin: 5px;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.buttons {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.buttons:hover {
+  background-color: #45a049;
+}
+
+#loginResult,
+#colorAddResult,
+#colorSearchResult {
+  color: red;
+  font-weight: bold;
+}
+
+#colorList {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+#loggedInDiv {
+  margin-bottom: 20px;
+}
